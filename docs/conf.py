@@ -23,7 +23,7 @@ exclude_patterns = ["_build"]
 
 # -- Theme: Furo + NEON GRID overlay -----------------------------------------
 html_theme = "furo"
-html_title = "vibe"
+html_title = "vibe::geospatial"
 
 html_static_path = ["_static"]
 html_css_files = ["css/vibesuite.css"]
@@ -43,5 +43,5 @@ html_context = {
 intersphinx_mapping = {
     "vibespatial": ("https://jarmak-personal.github.io/vibeSpatial/", None),
     "vibeproj": ("https://jarmak-personal.github.io/vibeProj/", None),
-    "vibespatial-raster": ("https://jarmak-personal.github.io/vibespatial-raster/", None),
+    "vibespatial-raster": ("https://jarmak-personal.github.io/vibeSpatial-Raster/", None),
 }

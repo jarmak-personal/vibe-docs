@@ -1,9 +1,7 @@
-# vibe
-
 ```{raw} html
 <div class="cp-hero">
   <div class="cp-hero-content">
-    <h1 class="cp-hero-title" data-glitch="vibe">vibe</h1>
+    <h1 class="cp-hero-title" data-glitch="vibe::geospatial">vibe::geospatial</h1>
     <p class="cp-hero-subtitle">
       GPU-accelerated geospatial for Python. Vector analytics, coordinate
       projections, and raster processing &mdash; all built on CUDA.
@@ -32,7 +30,7 @@
     </p>
     <span class="cp-card-link">Docs &rarr;</span>
   </a>
-  <a class="cp-card cp-card--raster cp-reveal" href="https://jarmak-personal.github.io/vibespatial-raster/">
+  <a class="cp-card cp-card--raster cp-reveal" href="https://jarmak-personal.github.io/vibeSpatial-Raster/">
     <div class="cp-card-accent"></div>
     <h3>vibeSpatial-Raster</h3>
     <p>
