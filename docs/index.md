@@ -73,6 +73,22 @@ The three projects exchange GPU-resident data without host round-trips:
 - **Raster + vibeProj**: Raster reprojection can chain through vibeProj
   for on-device CRS transforms of rasterized grid coordinates.
 
+## We stand on the shoulders of giants
+
+**vibe::geospatial** wouldn't exist without the open-source projects that
+paved the way. We're grateful to every contributor behind:
+
+- [GeoPandas](https://geopandas.org/) — the project that made geospatial
+  analysis in Python accessible and whose API set the standard
+- [RAPIDS](https://github.com/rapidsai) — proof that GPU-accelerated data
+  science in Python is possible, and the ecosystem that inspired this work
+- [CCCL](https://github.com/NVIDIA/cccl) — the CUDA C++ Core Libraries that
+  power the GPU primitives underneath
+- [cuda-python](https://github.com/NVIDIA/cuda-python) — Python bindings to
+  the CUDA driver and runtime APIs
+- …and every dependency in the stack — NumPy, Shapely, PyProj, PyGEOS,
+  Fiona, Rasterio, CuPy, and many more
+
 ```{toctree}
 :hidden:
 :maxdepth: 1
