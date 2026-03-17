@@ -1,7 +1,7 @@
 ```{raw} html
 <div class="cp-hero">
   <div class="cp-hero-content">
-    <h1 class="cp-hero-title" data-glitch="vibe::geospatial">vibe::geospatial</h1>
+    <h1 class="cp-hero-title" data-glitch="vibe::">vibe::<br>geospatial</h1>
     <p class="cp-hero-subtitle">
       GPU-accelerated geospatial for Python. Vector analytics, coordinate
       projections, and raster processing &mdash; all built on CUDA.
