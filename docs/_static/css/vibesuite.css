@@ -1,0 +1,676 @@
+/* ============================================================
+   NEON GRID — vibe Suite Landing Page
+   Adapted from the shared vibeSpatial/vibeProj/vibeSpatial-Raster theme.
+   Built on Furo.
+   ============================================================ */
+
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+/* ===========================
+   COLOR TOKENS
+   =========================== */
+:root {
+    /* Void / Backgrounds */
+    --cp-void: #050810;
+    --cp-surface-0: #0a0e1a;
+    --cp-surface-1: #111827;
+    --cp-surface-2: #1a2035;
+    --cp-surface-3: #232b42;
+
+    /* Suite accent — neutral white/silver */
+    --cp-accent: #e2e8f0;
+    --cp-accent-dim: #e2e8f088;
+    --cp-accent-bg: #e2e8f00a;
+    --cp-accent-glow: 0 0 8px #e2e8f055, 0 0 30px #e2e8f01a;
+    --cp-accent-glow-strong: 0 0 12px #e2e8f088, 0 0 45px #e2e8f033, 0 0 90px #e2e8f011;
+
+    /* Project accents */
+    --cp-cyan: #00e5ff;
+    --cp-magenta: #ff2d6f;
+    --cp-purple: #a855f7;
+    --cp-green: #39ff14;
+    --cp-amber: #fbbf24;
+
+    /* Text */
+    --cp-text: #e2e8f0;
+    --cp-text-muted: #8892a8;
+    --cp-text-dim: #4a5568;
+
+    /* Borders */
+    --cp-border: #1e293b;
+    --cp-border-bright: #2d3a52;
+
+    /* Grid pattern */
+    --cp-grid-color: #e2e8f006;
+    --cp-grid-size: 48px;
+    --cp-dot-color: #e2e8f00d;
+}
+
+/* ===========================
+   FURO OVERRIDES — DARK MODE
+   =========================== */
+body,
+body[data-theme="dark"] {
+    --color-foreground-primary: var(--cp-text);
+    --color-foreground-secondary: var(--cp-text-muted);
+    --color-foreground-muted: var(--cp-text-dim);
+    --color-foreground-border: var(--cp-border);
+
+    --color-background-primary: var(--cp-surface-0);
+    --color-background-secondary: var(--cp-surface-1);
+    --color-background-hover: var(--cp-surface-2);
+    --color-background-hover--transparent: #1a203500;
+    --color-background-border: var(--cp-border);
+
+    --color-brand-primary: var(--cp-accent);
+    --color-brand-content: var(--cp-accent);
+
+    --color-sidebar-background: var(--cp-void);
+    --color-sidebar-background-border: var(--cp-border);
+    --color-sidebar-brand-text: var(--cp-accent);
+    --color-sidebar-caption-text: var(--cp-accent);
+    --color-sidebar-link-text: var(--cp-text-muted);
+    --color-sidebar-link-text--top-level: var(--cp-text);
+    --color-sidebar-item-background--current: var(--cp-surface-2);
+    --color-sidebar-item-background--hover: var(--cp-surface-1);
+    --color-sidebar-item-expander-color: var(--cp-text-dim);
+    --color-sidebar-item-expander-color--hover: var(--cp-accent);
+    --color-sidebar-search-background: var(--cp-surface-1);
+    --color-sidebar-search-border: var(--cp-border);
+
+    --color-toc-background: transparent;
+    --color-toc-title-text: var(--cp-accent);
+    --color-toc-item-text: var(--cp-text-muted);
+    --color-toc-item-text--hover: var(--cp-accent);
+    --color-toc-item-text--active: var(--cp-accent);
+
+    --color-content-foreground: var(--cp-text);
+    --color-content-code-background: var(--cp-surface-2);
+    --color-content-code-foreground: var(--cp-cyan);
+
+    --color-link: var(--cp-cyan);
+    --color-link--hover: var(--cp-magenta);
+    --color-link-underline: #00e5ff55;
+    --color-link-underline--hover: var(--cp-magenta);
+
+    --color-admonition-background: var(--cp-surface-1);
+
+    --color-announcement-background: var(--cp-surface-2);
+    --color-announcement-text: var(--cp-accent);
+
+    --color-highlight-on-target: #00e5ff0d;
+    --color-inline-code-background: var(--cp-surface-2);
+    --color-table-header-background: var(--cp-surface-2);
+    --color-table-border: var(--cp-border);
+
+    /* Furo typography overrides */
+    --font-stack: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-stack--monospace: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    --font-stack--headings: 'Exo 2', var(--font-stack);
+    --font-size--normal: 15.5px;
+}
+
+/* Force dark mode — no light mode for cyberpunk */
+body[data-theme="light"] {
+    --color-foreground-primary: var(--cp-text);
+    --color-foreground-secondary: var(--cp-text-muted);
+    --color-foreground-muted: var(--cp-text-dim);
+    --color-foreground-border: var(--cp-border);
+    --color-background-primary: var(--cp-surface-0);
+    --color-background-secondary: var(--cp-surface-1);
+    --color-background-hover: var(--cp-surface-2);
+    --color-background-border: var(--cp-border);
+    --color-brand-primary: var(--cp-accent);
+    --color-brand-content: var(--cp-accent);
+    --color-sidebar-background: var(--cp-void);
+    --color-sidebar-background-border: var(--cp-border);
+    --color-link: var(--cp-cyan);
+    --color-link--hover: var(--cp-magenta);
+    --color-content-code-background: var(--cp-surface-2);
+    --color-content-code-foreground: var(--cp-cyan);
+    --color-inline-code-background: var(--cp-surface-2);
+    --color-table-header-background: var(--cp-surface-2);
+    --color-table-border: var(--cp-border);
+}
+
+/* ===========================
+   BASE STYLES
+   =========================== */
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--cp-surface-3) var(--cp-void);
+}
+
+body {
+    background: var(--cp-void);
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dot-grid HUD background */
+.page {
+    background-image:
+        radial-gradient(circle, var(--cp-dot-color) 1px, transparent 1px);
+    background-size: var(--cp-grid-size) var(--cp-grid-size);
+    background-position: center center;
+}
+
+/* Subtle scanline overlay */
+.main {
+    position: relative;
+}
+.main::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        #00e5ff02 2px,
+        #00e5ff02 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--cp-void);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--cp-surface-3);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cp-cyan);
+    box-shadow: 0 0 8px #00e5ff55;
+}
+
+/* Selection */
+::selection {
+    background: #00e5ff33;
+    color: #fff;
+}
+
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-stack--headings);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--cp-text);
+}
+
+h1 {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    position: relative;
+    padding-bottom: 0.5em;
+}
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cp-cyan), var(--cp-magenta), var(--cp-purple));
+    border-radius: 1px;
+    box-shadow: 0 0 8px #00e5ff44;
+}
+
+h2 {
+    color: var(--cp-text);
+    border-bottom: 1px solid var(--cp-border);
+    padding-bottom: 0.3em;
+}
+
+/* ===========================
+   LINKS
+   =========================== */
+a {
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+a:hover {
+    text-shadow: 0 0 8px #00e5ff44;
+}
+
+/* ===========================
+   SIDEBAR
+   =========================== */
+.sidebar-drawer {
+    border-right: 1px solid var(--cp-border) !important;
+}
+
+.sidebar-drawer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        var(--cp-cyan) 0%,
+        var(--cp-magenta) 50%,
+        var(--cp-purple) 100%
+    );
+    opacity: 0.6;
+    box-shadow: 0 0 8px #00e5ff33;
+}
+
+.sidebar-brand {
+    padding: 1.2rem 1rem;
+}
+.sidebar-brand-text {
+    font-family: 'Orbitron', var(--font-stack);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--cp-cyan), var(--cp-magenta), var(--cp-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===========================
+   TABLES
+   =========================== */
+table {
+    border-collapse: collapse;
+}
+table th {
+    background: var(--cp-surface-2) !important;
+    font-family: var(--font-stack--headings);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 0.82em;
+    color: var(--cp-cyan);
+    border-bottom: 2px solid #00e5ff44 !important;
+}
+table td {
+    border-bottom: 1px solid var(--cp-border) !important;
+}
+table tr:hover td {
+    background: #00e5ff08;
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
+.cp-hero {
+    position: relative;
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 5rem 2rem;
+    background:
+        radial-gradient(ellipse at 20% 30%, #00e5ff0a 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 70%, #ff2d6f0a 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, #a855f70a 0%, transparent 50%),
+        var(--cp-void);
+    border-bottom: 1px solid var(--cp-border);
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cp-hero canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.cp-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero title — gradient across all three project colors */
+.cp-hero-title {
+    font-family: 'Orbitron', var(--font-stack);
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--cp-cyan) 0%, var(--cp-magenta) 50%, var(--cp-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 0.3em 0;
+    line-height: 1.1;
+    border: none;
+    padding-bottom: 0;
+    filter: drop-shadow(0 0 30px #00e5ff22) drop-shadow(0 0 60px #ff2d6f11);
+}
+.cp-hero-title::after {
+    display: none;
+}
+
+/* Glitch animation */
+.cp-hero-title[data-glitch] {
+    position: relative;
+}
+.cp-hero-title[data-glitch]::before,
+.cp-hero-title[data-glitch]::after {
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, var(--cp-cyan) 0%, var(--cp-magenta) 50%, var(--cp-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.cp-hero-title[data-glitch]::before {
+    z-index: -1;
+}
+.cp-hero-title[data-glitch]::after {
+    z-index: -1;
+}
+.cp-hero-title[data-glitch].glitch-active::before {
+    animation: glitch-shift-1 0.3s steps(2) 1;
+    opacity: 0.8;
+}
+.cp-hero-title[data-glitch].glitch-active::after {
+    animation: glitch-shift-2 0.3s steps(2) 1;
+    opacity: 0.8;
+}
+
+@keyframes glitch-shift-1 {
+    0%   { clip-path: inset(40% 0 20% 0); transform: translate(-3px, 1px); }
+    25%  { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+    50%  { clip-path: inset(70% 0 5% 0);  transform: translate(-1px, 2px); }
+    75%  { clip-path: inset(20% 0 40% 0); transform: translate(3px, 0); }
+    100% { clip-path: inset(0); transform: translate(0); opacity: 0; }
+}
+@keyframes glitch-shift-2 {
+    0%   { clip-path: inset(60% 0 10% 0); transform: translate(3px, -1px); }
+    25%  { clip-path: inset(5% 0 70% 0);  transform: translate(-2px, 2px); }
+    50%  { clip-path: inset(30% 0 30% 0); transform: translate(1px, -2px); }
+    75%  { clip-path: inset(50% 0 20% 0); transform: translate(-3px, 1px); }
+    100% { clip-path: inset(0); transform: translate(0); opacity: 0; }
+}
+
+/* Hero subtitle */
+.cp-hero-subtitle {
+    font-family: var(--font-stack);
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--cp-text-muted);
+    margin: 0 0 2rem 0;
+    max-width: 650px;
+    line-height: 1.5;
+}
+
+/* ===========================
+   SUITE PROJECT CARDS
+   =========================== */
+.cp-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.cp-suite-cards .cp-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.cp-card {
+    background: var(--cp-surface-1);
+    border: 1px solid var(--cp-border);
+    border-radius: 8px;
+    padding: 1.8rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Per-project accent top bar */
+.cp-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    opacity: 0.5;
+    transition: opacity 0.25s ease, height 0.25s ease;
+}
+
+.cp-card:hover .cp-card-accent {
+    opacity: 1;
+    height: 3px;
+}
+
+/* vibeSpatial — magenta */
+.cp-card--vibespatial .cp-card-accent {
+    background: linear-gradient(90deg, var(--cp-magenta), #ff2d6f88);
+}
+.cp-card--vibespatial:hover {
+    border-color: #ff2d6f55;
+    box-shadow: 0 0 12px #ff2d6f33, 0 0 40px #ff2d6f11;
+    transform: translateY(-3px);
+}
+.cp-card--vibespatial h3 {
+    color: var(--cp-magenta);
+}
+.cp-card--vibespatial .cp-card-link {
+    color: var(--cp-magenta);
+}
+
+/* vibeProj — cyan */
+.cp-card--vibeproj .cp-card-accent {
+    background: linear-gradient(90deg, var(--cp-cyan), #00e5ff88);
+}
+.cp-card--vibeproj:hover {
+    border-color: #00e5ff55;
+    box-shadow: 0 0 12px #00e5ff33, 0 0 40px #00e5ff11;
+    transform: translateY(-3px);
+}
+.cp-card--vibeproj h3 {
+    color: var(--cp-cyan);
+}
+.cp-card--vibeproj .cp-card-link {
+    color: var(--cp-cyan);
+}
+
+/* vibeSpatial-Raster — purple */
+.cp-card--raster .cp-card-accent {
+    background: linear-gradient(90deg, var(--cp-purple), #a855f788);
+}
+.cp-card--raster:hover {
+    border-color: #a855f755;
+    box-shadow: 0 0 12px #a855f733, 0 0 40px #a855f711;
+    transform: translateY(-3px);
+}
+.cp-card--raster h3 {
+    color: var(--cp-purple);
+}
+.cp-card--raster .cp-card-link {
+    color: var(--cp-purple);
+}
+
+/* Card content styling */
+.cp-card h3 {
+    font-family: 'Orbitron', var(--font-stack);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.8rem 0;
+}
+
+.cp-card p {
+    color: var(--cp-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 1.2rem 0;
+    flex-grow: 1;
+}
+
+.cp-card-link {
+    font-family: 'Orbitron', var(--font-stack);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    transition: letter-spacing 0.2s ease;
+}
+
+.cp-card:hover .cp-card-link {
+    letter-spacing: 0.15em;
+}
+
+/* ===========================
+   SCROLL REVEAL
+   =========================== */
+.cp-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.cp-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+footer {
+    border-top: 1px solid var(--cp-border) !important;
+}
+footer::before {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--cp-cyan), var(--cp-magenta), var(--cp-purple));
+    margin-bottom: 1rem;
+    box-shadow: 0 0 6px #00e5ff33;
+}
+
+/* ===========================
+   CODE BLOCKS
+   =========================== */
+div.highlight {
+    position: relative;
+    background: var(--cp-surface-1) !important;
+    border: 1px solid var(--cp-border);
+    border-left: 3px solid var(--cp-cyan);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+div.highlight:hover {
+    border-color: var(--cp-border-bright);
+    border-left-color: var(--cp-cyan);
+    box-shadow: 0 0 8px #00e5ff22;
+}
+
+div.highlight::before {
+    content: '';
+    display: block;
+    height: 32px;
+    background: var(--cp-surface-2);
+    border-bottom: 1px solid var(--cp-border);
+    background-image:
+        radial-gradient(circle at 16px 16px, #ff5f5788 4px, transparent 4px),
+        radial-gradient(circle at 34px 16px, #ffbd2e88 4px, transparent 4px),
+        radial-gradient(circle at 52px 16px, #28c84088 4px, transparent 4px);
+    background-repeat: no-repeat;
+}
+
+div.highlight pre {
+    background: transparent !important;
+    margin: 0;
+    padding: 1em 1.2em;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+code.literal {
+    background: var(--cp-surface-2) !important;
+    border: 1px solid var(--cp-border);
+    border-radius: 4px;
+    padding: 0.15em 0.4em;
+    font-size: 0.88em;
+    color: var(--cp-cyan) !important;
+    transition: border-color 0.2s ease;
+}
+
+/* ===========================
+   MOBILE / RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+    .cp-hero {
+        padding: 3rem 1.2rem;
+        margin: -0.5rem -0.5rem 1.5rem -0.5rem;
+    }
+    .cp-hero-title {
+        font-size: 2.5rem;
+    }
+    .cp-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===========================
+   REDUCED MOTION
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+    .cp-hero-title[data-glitch].glitch-active::before,
+    .cp-hero-title[data-glitch].glitch-active::after {
+        animation: none !important;
+        opacity: 0 !important;
+    }
+    .cp-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .main::before {
+        display: none;
+    }
+    canvas.cp-particles {
+        display: none !important;
+    }
+}
+
+/* ===========================
+   PRINT
+   =========================== */
+@media print {
+    .main::before,
+    canvas.cp-particles,
+    .sidebar-drawer::before {
+        display: none !important;
+    }
+    body {
+        background: #fff;
+        color: #000;
+    }
+}

@@ -1,0 +1,16 @@
+[project]
+name = "vibe-docs"
+version = "0.1.0"
+description = "Landing page for the vibe project suite"
+requires-python = ">=3.10"
+
+[dependency-groups]
+docs = [
+    "sphinx>=8",
+    "furo>=2024.8",
+    "myst-parser>=4",
+    "sphinx-copybutton>=0.5",
+]
+
+[tool.uv]
+default-groups = ["docs"]
