@@ -1,6 +1,6 @@
-# vibe
+# vibe::geospatial Docs
 
-Landing page for the **vibe** project suite — GPU-accelerated geospatial libraries for Python.
+Landing page for the **vibe::geospatial** project suite — GPU-accelerated geospatial libraries for Python.
 
 ## Projects
 
